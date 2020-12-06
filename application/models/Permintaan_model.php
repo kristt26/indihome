@@ -2,54 +2,37 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Wajibpajak_model extends CI_Model
+class Permintaan_model extends CI_Model
 {
 
     public function select($id = null)
     {
         if ($id == null) {
-            $data = $this->db->get('wajibpajak')->result();
+            $data = $this->db->get('permintaan')->result();
             foreach ($data as $key => $value) {
-                $value->usaha = $this->db->get_where('usaha', ['wajibpajakid' => $value->id])->row_array();
-                $value->usaha['kategori'] = $this->db->get_where('kategori', ['id' => $value->usaha['kategoriid']])->row_array();
+                $value->pelanggan = $this->db->get_where('pelanggan', ['id' => $value->pelangganid])->row_array();
+                $value->karyawan = $this->db->get_where('karyawan', ['id' => $value->karyawanid])->row_array();
             }
             return $data;
         } else {
-            $data = $this->db->get_where('wajibpajak', ['id' => $id])->row_array();
-            $data['usaha'] = $this->db->get_where('usaha', ['wajibpajakid' => $data['id']])->row_array();
+            $data = $this->db->get_where('permintaan', ['id' => $id])->row_array();
+            $data['pelanggan'] = $this->db->get_where('pelanggan', ['id' => $data['pelangganid']])->row_array();
+            $data['karyawan'] = $this->db->get_where('karyawan', ['id' => $data['karyawanid']])->row_array();
             return $data;
         }
     }
     public function insert($data)
     {
         $this->db->trans_begin();
-        $itemWajibPajak = [
-            'nik' => $data['nik'],
-            'nama' => $data['nama'],
-            'jk' => $data['jk'],
-            'nowajibpajak' => $data['nowajibpajak'],
-            'alamat' => $data['alamat'],
-            'kontak' => $data['kontak'],
-            'email' => $data['email'],
-            'petugasid' => $this->session->userdata('id'),
+        $itempermintaan = [
+            'noregister' => $data['noregister'],
+            'tanggal' => $data['tanggal'],
+            'namapemohon' => $data['namapemohon'],
+            'status' => $data['status'],
+            'pelangganid' => $data['pelanggan']['pelangganid'],
         ];
-        $this->db->insert('wajibpajak', $itemWajibPajak);
+        $this->db->insert('permintaan', $itempermintaan);
         $data['id'] = $this->db->insert_id();
-        $itemusaha = [
-            'alamat' => $data['usaha']['alamat'],
-            'lat' => $data['usaha']['lat'],
-            'long' => $data['usaha']['long'],
-            'kategoriid' => $data['usaha']['kategoriid'],
-            'wajibpajakid' => $data['id'],
-            'status' => 'true',
-            'luas' => $data['luas'],
-            'jenisbangunan' => $data['jenisbangunan'],
-            'statustempatusaha' => $data['statustempatusaha'],
-            'jumlahpegawai' => $data['jumlahpegawai'],
-            'distrik' => $data['distrik'],
-        ];
-        $this->db->insert('usaha', $itemusaha);
-        $data['usaha']['id'] = $this->db->insert_id();
         if ($result) {
             return $data;
         } else {
@@ -65,7 +48,7 @@ class Wajibpajak_model extends CI_Model
             'lat' => $data['usaha']['lat'],
             'long' => $data['usaha']['long'],
             'kategoriid' => $data['usaha']['kategoriid'],
-            'wajibpajakid' => $data['id'],
+            'permintaanid' => $data['id'],
             'status' => 'true',
             'luas' => $data['luas'],
             'jenisbangunan' => $data['jenisbangunan'],
@@ -75,18 +58,18 @@ class Wajibpajak_model extends CI_Model
         ];
         $this->db->where('id', $data['usaha']['id']);
         $this->db->update('usaha', $item);
-        $itemWajibPajak = [
+        $itempermintaan = [
             'nik' => $data['nik'],
             'nama' => $data['nama'],
             'jk' => $data['jk'],
-            'nowajibpajak' => $data['nowajibpajak'],
+            'nopermintaan' => $data['nopermintaan'],
             'alamat' => $data['alamat'],
             'kontak' => $data['kontak'],
             'email' => $data['email'],
             'petugasid' => $this->session->userdata('id'),
         ];
         $this->db->where('id', $data['id']);
-        $this->db->update('wajibpajak', $itemWajibPajak);
+        $this->db->update('permintaan', $itempermintaan);
         if ($this->db->trans_status()) {
             $this->db->trans_commit();
             return $data;
@@ -98,7 +81,7 @@ class Wajibpajak_model extends CI_Model
     public function delete($id)
     {
         $this->db->where('id', $id);
-        return $this->db->delete('wajibpajak');
+        return $this->db->delete('permintaan');
     }
 
 }

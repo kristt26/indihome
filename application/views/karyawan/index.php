@@ -1,6 +1,6 @@
 <div class="row" ng-controller="petugasController">
   <div class="col-md-4">
-    <div class="card card-warning">
+    <div class="card card-danger">
       <div class="card-header">
         <h3 class="card-title"><i class="fas fa-plus-square fa-1x" ></i>&nbsp;&nbsp; Input Petugas</h3>
       </div>
@@ -40,7 +40,7 @@
     </div>
   </div>
   <div class="col-md-8">
-    <div class="card card-warning">
+    <div class="card card-danger">
       <div class="card-header">
         <h3 class="card-title"><i class="fas fa-th-list"></i>&nbsp;&nbsp; List Petugas</h3>
       </div>
