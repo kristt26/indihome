@@ -32,7 +32,6 @@ class Pelanggan_model extends CI_Model
             'kontak' => $data['kontak'],
             'alamat' => $data['alamat'],
             'email' => $data['email'],
-            'paket' => $data['paket'],
         ];
         $this->db->where('id', $data['id']);
         $this->db->update('pelanggan', $item);

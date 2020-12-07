@@ -23,17 +23,13 @@
             <label for="namapelanggan" class="col-form-label col-form-label-sm">Nama Pelanggan</label>
             <input type="text" class="form-control form-control-sm" id="namapelanggan" ng-model="model.pelanggan.nama" disabled>
           </div>
-          <div class="form-group" ng-show="model.pelanggan">
+          <!-- <div class="form-group" ng-show="model.pelanggan">
             <label for="paketaktif" class="col-form-label col-form-label-sm">Paket Aktif</label>
             <input type="text" class="form-control form-control-sm" id="paketaktif" ng-model="model.pelanggan.paket" disabled>
-          </div>
+          </div> -->
           <div class="form-group">
             <label for="jenispermintaan" class="col-form-label col-form-label-sm">Jenis Permintaan</label>
-            <select class="form-control form-control-sm" ng-options="item as item for item in items.jenispengajuan" ng-model="model.jenispengajuan"></select>
-          </div>
-          <div class="form-group">
-            <label for="paket" class="col-form-label col-form-label-sm">Paket Pilihan</label>
-            <select class="form-control form-control-sm" ng-options="item as item for item in items.paket" ng-model="model.paket"></select>
+            <textarea class="form-control form-control-sm" ng-model="model.jenispengajuan"></textarea>
           </div>
           <div class="form-group d-flex justify-content-end">
             <button type="submit" class="btn btn-primary btn-sm pull-right">{{simpan ? 'Simpan': 'Ubah'}}</button>

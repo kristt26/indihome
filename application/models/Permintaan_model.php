@@ -38,7 +38,6 @@ class Permintaan_model extends CI_Model
             'status' => 'Proses',
             'pelangganid' => $data['pelanggan']['id'],
             'jenispengajuan' => $data['jenispengajuan'],
-            'paket' => $data['paket'],
         ];
         $this->db->insert('permintaan', $itempermintaan);
         $data['id'] = $this->db->insert_id();

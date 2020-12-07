@@ -53,6 +53,6 @@ function helperServices($location) {
     service.roles = { id: 2, role: 'CSR' };
     service.sex = ['Pria', 'Wanita'];
     service.paket = ['10 Mbps', '20 Mbps', '50 Mbps', '100 Mbps', '200 Mbps', '300 Mbps'];
-    service.jenispengajuan = ['Upgrade', 'Downgrade'];
+    service.jenispengajuan = ['Upgrade', 'Downgrade', 'Tambah Minipack', 'Hapus Minipack', 'Migrasi Paket'];
     return service;
 }
