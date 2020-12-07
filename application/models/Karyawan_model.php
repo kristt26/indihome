@@ -58,8 +58,8 @@ class Karyawan_model extends CI_Model
     {
         $this->db->trans_begin();
         $user = [
-            'username' => $data['email'],
-            'password' => md5($data['email']),
+            'username' => $data['username'],
+            'password' => md5($data['password']),
             'status' => 1,
         ];
         $this->db->insert('user', $user);
@@ -104,7 +104,6 @@ class Karyawan_model extends CI_Model
             'sex' => $data['sex'],
             'kontak' => $data['kontak'],
             'email' => $data['email'],
-            'userid' => $userid,
         ];
         $this->db->where('id', $data['id']);
         $this->db->update('karyawan', $karyawan);

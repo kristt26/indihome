@@ -8,12 +8,12 @@
       <div class="card-body">
         <form role="form" ng-submit="save()">
           <div class="form-group">
-            <label for="nip"  class="col-form-label col-form-label-sm">NIP</label>
-            <input type="text" class="form-control  form-control-sm" id="nip" ng-model="model.nip" placeholder="No. NIP">
-          </div>
-          <div class="form-group">
             <label for="nama" class="col-form-label col-form-label-sm">Nama</label>
             <input type="text" class="form-control  form-control-sm" id="nama" ng-model="model.nama" placeholder="Nama Petugas">
+          </div>
+          <div class="form-group">
+            <label for="nama" class="col-form-label col-form-label-sm">Jenis Kelamin</label>
+            <select class="form-control form-control-sm" ng-options="item as item for item in sexs" ng-model="model.sex"></select>
           </div>
           <div class="form-group">
             <label for="alamat" class="col-form-label col-form-label-sm">Alamat</label>
@@ -26,6 +26,10 @@
           <div class="form-group">
             <label for="email" class="col-form-label col-form-label-sm">Email</label>
             <input type="email" class="form-control  form-control-sm" id="email" ng-model="model.email" placeholder="Email Petugas">
+          </div>
+          <div class="form-group">
+            <label for="username" class="col-form-label col-form-label-sm">Username</label>
+            <input type="text" class="form-control  form-control-sm" id="username" ng-model="model.username" placeholder="Username">
           </div>
           <div class="form-group" ng-show = "simpan">
             <label for="password" class="col-form-label col-form-label-sm">Password</label>
@@ -50,22 +54,24 @@
           <thead>
             <tr>
               <th>No</th>
-              <th>NIP</th>
               <th>Nama</th>
+              <th>Jenis Kelamin</th>
               <th>Alamat</th>
               <th>Telepon</th>
               <th>Email</th>
+              <th>Role</th>
               <th><i class="fas fa-cog"></i></th>
             </tr>
           </thead>
           <tbody>
             <tr ng-repeat="item in datas">
               <td>{{$index+1}}</td>
-              <td>{{item.nip}}</td>
               <td>{{item.nama}}</td>
+              <td>{{item.sex}}</td>
               <td><span class="tag tag-success">{{item.alamat}}</span></td>
               <td>{{item.kontak}}</td>
               <td>{{item.email}}</td>
+              <td>{{item.roles.role}}</td>
               <td>
                 <button type="button" class="btn btn-warning btn-sm" ng-click ="edit(item)"><i class="fas fa-edit"></i></button>
               </td>

@@ -4,7 +4,14 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Permintaan_model extends CI_Model
 {
-
+    
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->model('Karyawan_model');
+        
+    }
+    
     public function select($id = null)
     {
         if ($id == null) {
@@ -26,35 +33,52 @@ class Permintaan_model extends CI_Model
         $this->db->trans_begin();
         $itempermintaan = [
             'noregister' => $data['noregister'],
-            'tanggal' => $data['tanggal'],
+            'tanggal' => $data['tanggal'] = date("Y-m-d H:i:s"),
             'namapemohon' => $data['namapemohon'],
-            'status' => $data['status'],
-            'pelangganid' => $data['pelanggan']['pelangganid'],
+            'status' => 'Proses',
+            'pelangganid' => $data['pelanggan']['id'],
+            'jenispengajuan' => $data['jenispengajuan'],
+            'paket' => $data['paket'],
         ];
         $this->db->insert('permintaan', $itempermintaan);
         $data['id'] = $this->db->insert_id();
-        if ($result) {
+        if ($this->db->trans_status()) {
+            $this->db->trans_commit();
             return $data;
         } else {
+            $this->db->trans_rollback();
             return false;
         }
 
+    }
+
+    public function proses($data)
+    {
+        $item = [
+            'tanggalproses' => $data['tanggalproses'] = date("Y-m-d H:i:s"),
+            'karyawanid' => $data['karyawanid'] = $this->session->userdata('id'),
+            'status' => 'Success',
+        ];
+        $this->db->where('id', $data['id']);
+        $result = $this->db->update('permintaan', $item);
+        if($result){
+            $data['karyawan'] = $this->Karyawan_model->select($data['karyawanid']);
+            return $data;
+        }else{
+            return false;
+        }
     }
     public function update($data)
     {
         $this->db->trans_begin();
         $itemusaha = [
-            'alamat' => $data['usaha']['alamat'],
-            'lat' => $data['usaha']['lat'],
-            'long' => $data['usaha']['long'],
-            'kategoriid' => $data['usaha']['kategoriid'],
-            'permintaanid' => $data['id'],
-            'status' => 'true',
-            'luas' => $data['luas'],
-            'jenisbangunan' => $data['jenisbangunan'],
-            'statustempatusaha' => $data['statustempatusaha'],
-            'jumlahpegawai' => $data['jumlahpegawai'],
-            'distrik' => $data['distrik'],
+            'noregister' => $data['noregister'],
+            'tanggal' => $data['tanggal'],
+            'namapemohon' => $data['namapemohon'],
+            'status' => 'Proses',
+            'pelangganid' => $data['pelanggan']['pelangganid'],
+            'jenispengajuan' => $data['jenispengajuan'],
+            'paket' => $data['paket'],
         ];
         $this->db->where('id', $data['usaha']['id']);
         $this->db->update('usaha', $item);

@@ -15,7 +15,7 @@ class pelanggan extends CI_Controller
     public function index()
     {
         $data['content'] = $this->load->view('pelanggan/index', '', true);
-        $this->load->view('_sharedadmin/layout', $data);
+        $this->load->view('_shared/layout', $data);
     }
 
     public function get($id = null)

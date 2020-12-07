@@ -38,6 +38,13 @@ class permintaan extends CI_Controller
         echo json_encode($result);
     }
 
+    public function proses()
+    {
+        $data = json_decode($this->security->xss_clean($this->input->raw_input_stream), true);
+        $result = $this->Permintaan_model->proses($data);
+        echo json_encode($result);
+    }
+
     public function update()
     {
         $data = json_decode($this->security->xss_clean($this->input->raw_input_stream), true);
