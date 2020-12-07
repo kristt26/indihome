@@ -187,7 +187,7 @@ function PetugasServices($http, $q, helperServices, AuthService) {
 
 }
 function PelangganServices($http, $q, helperServices, AuthService) {
-    var controller = helperServices.url + '/pelanggan/';
+    var controller = helperServices.url + '/csr/pelanggan/';
     var service = {};
     service.data = [];
     service.instance = false;
@@ -289,13 +289,14 @@ function PelangganServices($http, $q, helperServices, AuthService) {
     }
 
 }
+
 function PermintaanServices($http, $q, helperServices, AuthService) {
-    var controller = helperServices.url + '/permintaan/';
+    var controller = helperServices.url + '/csr/permintaan/';
     var service = {};
     service.data = [];
     service.instance = false;
     return {
-        get: get, post: post, put: put, getDetail: getDetail, proses:proses
+        get: get, post: post, put: put, getDetail: getDetail, proses:proses, pending:pending
     };
 
     function get() {
@@ -373,6 +374,28 @@ function PermintaanServices($http, $q, helperServices, AuthService) {
         $http({
             method: 'post',
             url: controller + 'proses',
+            data: param,
+            headers: AuthService.getHeader()
+        }).then(
+            (res) => {
+                def.resolve(res.data);
+            },
+            (err) => {
+                def.reject(err);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: err.data
+                })
+            }
+        );
+        return def.promise;
+    }
+    function pending(param) {
+        var def = $q.defer();
+        $http({
+            method: 'post',
+            url: controller + 'pending',
             data: param,
             headers: AuthService.getHeader()
         }).then(

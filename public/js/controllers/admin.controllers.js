@@ -164,7 +164,7 @@ function permintaanController($scope, helperServices, PermintaanServices, Pelang
         }
     }
     $scope.detail = (item)=>{
-        if(item.status=='Proses')
+        if(item.status=='Proses' || item.status=='Pending')
             location.href = helperServices.url + "/csr/proses/index/" + item.id;
     }
     
@@ -180,6 +180,20 @@ function prosesPermintaanController($scope, helperServices, PermintaanServices) 
     $scope.save = () => {
         $.LoadingOverlay("show");
         PermintaanServices.proses($scope.model).then(x=>{
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: 'Proses Berhasil'
+            })
+            location.href = helperServices.url + "/csr/permintaan";
+        })
+    }
+    $scope.message = ()=>{
+        $('#pesan').modal('show');
+    }
+    $scope.pending = ()=>{
+        $.LoadingOverlay("show");
+        PermintaanServices.pending($scope.model).then(x=>{
             Swal.fire({
                 icon: 'success',
                 title: 'Success',

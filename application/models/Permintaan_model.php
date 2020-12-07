@@ -67,6 +67,24 @@ class Permintaan_model extends CI_Model
             return false;
         }
     }
+
+    public function pending($data)
+    {
+        $item = [
+            'tanggalproses' => $data['tanggalproses'] = date("Y-m-d H:i:s"),
+            'karyawanid' => $data['karyawanid'] = $this->session->userdata('id'),
+            'status' => 'Pending',
+            'message' => $data['message'],
+        ];
+        $this->db->where('id', $data['id']);
+        $result = $this->db->update('permintaan', $item);
+        if($result){
+            $data['karyawan'] = $this->Karyawan_model->select($data['karyawanid']);
+            return $data;
+        }else{
+            return false;
+        }
+    }
     public function update($data)
     {
         $this->db->trans_begin();

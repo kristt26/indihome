@@ -14,7 +14,7 @@ class permintaan extends CI_Controller
 
     public function index()
     {
-        $data['content'] = $this->load->view('csr/permintaan/index', '', true);
+        $data['content'] = $this->load->view('permintaan/index', '', true);
         $this->load->view('_shared/layout', $data);
     }
 
@@ -35,6 +35,20 @@ class permintaan extends CI_Controller
     {
         $data = json_decode($this->security->xss_clean($this->input->raw_input_stream), true);
         $result = $this->Permintaan_model->insert($data);
+        echo json_encode($result);
+    }
+
+    public function proses()
+    {
+        $data = json_decode($this->security->xss_clean($this->input->raw_input_stream), true);
+        $result = $this->Permintaan_model->proses($data);
+        echo json_encode($result);
+    }
+
+    public function pending()
+    {
+        $data = json_decode($this->security->xss_clean($this->input->raw_input_stream), true);
+        $result = $this->Permintaan_model->pending($data);
         echo json_encode($result);
     }
 

@@ -17,19 +17,20 @@
         </div>
       </div>
       <!-- /.card-header -->
-      <div class="card-body table-responsive p-0" style="height: 200px;">
+      <div class="card-body table-responsive p-0" style="height: 500px;">
         <div id="print">
           <div class="screen">
             <div class="col-md-12 d-flex justify-content-between">
               <div class="col-md-4"><img src="<?=base_url('public/img/logo.png');?>" width="100px"></div>
               <div class="col-md-4 text-center">
-                <h2>LAPORAN</h2>
+                <h2>LAPORAN</h2><h5>TANGGAL: {{tanggal}}</h5>
+
               </div>
               <div class="col-md-4">&nbsp;</div>
             </div>
             <hr class="style2" style="margin-bottom:12px"><br>
           </div>
-          <table class="table table-sm table-hover">
+          <table class="table table-sm table-bordered">
             <thead>
               <tr>
                 <th>No</th>
@@ -37,9 +38,9 @@
                 <th>Nama Pemohon</th>
                 <th>Tanggal Pengajuan</th>
                 <th>Jenis Pengajuan</th>
-                <th>Paket Pilihan</th>
                 <th>Status</th>
                 <th>Tanggal Proses</th>
+                <th>Pesan</th>
                 <th>CSR</th>
               </tr>
             </thead>
@@ -50,9 +51,9 @@
                 <td>{{item.namapemohon}}</td>
                 <td>{{item.tanggal}}</td>
                 <td>{{item.jenispengajuan}}</td>
-                <td>{{item.paket}}</td>
                 <td>{{item.status}}</td>
                 <td>{{item.tanggalproses}}</td>
+                <td>{{item.message}}</td>
                 <td>{{item.nama}}</td>
               </tr>
             </tbody>

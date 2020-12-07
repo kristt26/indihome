@@ -45,18 +45,16 @@
         <h3 class="card-title"><i class="fas fa-th-list"></i>&nbsp;&nbsp; List Permohonan</h3>
       </div>
       <!-- /.card-header -->
-      <div class="card-body table-responsive p-0" style="height: 200px;">
+      <div class="card-body table-responsive p-0" style="height: 500px;">
         <table class="table table-sm table-hover table-head-fixed text-nowrap">
           <thead>
             <tr>
               <th>No</th>
               <th>No Registrasi</th>
               <th>Id Pelanggan</th>
-              <th>Paket Aktif</th>
               <th>Nama Pemohon</th>
               <th>Tanggal Pengajuan</th>
               <th>Jenis Pengajuan</th>
-              <th>Paket Pilihan</th>
               <th>Status</th>
               <th><i class="fas fa-cog"></i></th>
             </tr>
@@ -66,14 +64,13 @@
               <td>{{$index+1}}</td>
               <td>{{item.noregister}}</td>
               <td>{{item.pelanggan.kodepelanggan}}</td>
-              <td>{{item.pelanggan.paket}}</td>
               <td>{{item.namapemohon}}</td>
               <td>{{item.tanggal}}</td>
               <td>{{item.jenispengajuan}}</td>
-              <td>{{item.paket}}</td>
               <td>{{item.status}}</td>
               <td>
                 <button type="button" class="btn btn-warning btn-sm" ng-click ="edit(item)"><i class="fas fa-edit"></i></button>
+                <button type="button" ng-disabled="item.status=='Success'" ng-class="{'btn btn-info btn-sm': item.status=='Proses'||item.status=='Pending', 'btn btn-success btn-sm': item.status=='Success'}" ng-click ="detail(item)"><i ng-class="{'fas fa-eye': item.status=='Proses'||item.status=='Pending', 'fas fa-check': item.status=='Success'}"></i></button>
               </td>
             </tr>
           </tbody>

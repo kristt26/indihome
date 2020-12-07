@@ -18,7 +18,7 @@ class Laporan_model extends CI_Model {
             `permintaan`.`tanggalproses`,
             `permintaan`.`karyawanid`,
             `permintaan`.`jenispengajuan`,
-            `permintaan`.`paket`,
+            `permintaan`.`message`,
             `pelanggan`.`kodepelanggan`,
             `karyawan`.`nama`
         FROM

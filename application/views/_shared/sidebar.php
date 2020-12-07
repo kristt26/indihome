@@ -34,22 +34,7 @@
                 </p>
               </a>
             </li>
-            <li class="nav-item">
-              <a href="<?=base_url('pelanggan')?>" ng-class="{'nav-link active': header=='Pelanggan', 'nav-link': header!='Pelanggan'}">
-                <i class="nav-icon fas fa-address-card"></i>
-                <p>
-                  Pelanggan
-                </p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="<?=base_url('permintaan')?>" ng-class="{'nav-link active': header=='Permohonan', 'nav-link': header!='Permohonan'}">
-                <i class="nav-icon fas fa-address-card"></i>
-                <p>
-                  Permohonan
-                </p>
-              </a>
-            </li>
+            
             <li class="nav-item">
               <a href="<?=base_url('laporan')?>" ng-class="{'nav-link active': header=='Laporan', 'nav-link': header!='Laporan'}">
                 <i class="nav-icon fas fa-file"></i>
@@ -71,6 +56,14 @@
                 <i class="nav-icon fas fa-home"></i>
                 <p>
                   Home
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="<?=base_url('csr/pelanggan')?>" ng-class="{'nav-link active': header=='Pelanggan', 'nav-link': header!='Pelanggan'}">
+                <i class="nav-icon fas fa-address-card"></i>
+                <p>
+                  Pelanggan
                 </p>
               </a>
             </li>
