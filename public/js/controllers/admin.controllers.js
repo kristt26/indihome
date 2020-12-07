@@ -175,6 +175,7 @@ function prosesPermintaanController($scope, helperServices, PermintaanServices) 
     $scope.model = {};
     PermintaanServices.getDetail().then(x => {
         $scope.model = x;
+        $.LoadingOverlay("show");
     })
     $scope.save = () => {
         $.LoadingOverlay("show");
