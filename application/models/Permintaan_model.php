@@ -70,26 +70,13 @@ class Permintaan_model extends CI_Model
     public function update($data)
     {
         $this->db->trans_begin();
-        $itemusaha = [
+        $itempermintaan = [
             'noregister' => $data['noregister'],
-            'tanggal' => $data['tanggal'],
+            'tanggal' => $data['tanggal'] = date("Y-m-d H:i:s"),
             'namapemohon' => $data['namapemohon'],
             'status' => 'Proses',
-            'pelangganid' => $data['pelanggan']['pelangganid'],
+            'pelangganid' => $data['pelanggan']['id'],
             'jenispengajuan' => $data['jenispengajuan'],
-            'paket' => $data['paket'],
-        ];
-        $this->db->where('id', $data['usaha']['id']);
-        $this->db->update('usaha', $item);
-        $itempermintaan = [
-            'nik' => $data['nik'],
-            'nama' => $data['nama'],
-            'jk' => $data['jk'],
-            'nopermintaan' => $data['nopermintaan'],
-            'alamat' => $data['alamat'],
-            'kontak' => $data['kontak'],
-            'email' => $data['email'],
-            'petugasid' => $this->session->userdata('id'),
         ];
         $this->db->where('id', $data['id']);
         $this->db->update('permintaan', $itempermintaan);
