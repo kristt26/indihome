@@ -23,7 +23,7 @@
             <div class="col-md-12 d-flex justify-content-between">
               <div class="col-md-4"><img src="<?=base_url('public/img/logo.png');?>" width="100px"></div>
               <div class="col-md-4 text-center">
-                <h3>LAPORAN <br>HASIL ANALISA AHP</h3>
+                <h2>LAPORAN</h2>
               </div>
               <div class="col-md-4">&nbsp;</div>
             </div>
