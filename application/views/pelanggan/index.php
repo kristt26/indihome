@@ -25,7 +25,7 @@
           </div>
           <div class="form-group">
             <label for="email" class="col-form-label col-form-label-sm">Email</label>
-            <input type="email" class="form-control  form-control-sm" id="email" ng-model="model.email" placeholder="Email Petugas">
+            <input type="email" class="form-control  form-control-sm" id="email" ng-model="model.email" placeholder="Email Pelanggan">
           </div>
           <div class="form-group d-flex justify-content-end">
             <button type="submit" class="btn btn-primary btn-sm pull-right">{{simpan ? 'Simpan': 'Ubah'}}</button>
