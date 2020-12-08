@@ -27,7 +27,7 @@
             <label for="email" class="col-form-label col-form-label-sm">Email</label>
             <input type="email" class="form-control  form-control-sm" id="email" ng-model="model.email" placeholder="Email Petugas">
           </div>
-          <div class="form-group">
+          <div class="form-group" ng-show = "simpan">
             <label for="username" class="col-form-label col-form-label-sm">Username</label>
             <input type="text" class="form-control  form-control-sm" id="username" ng-model="model.username" placeholder="Username">
           </div>

@@ -50,7 +50,6 @@ function petugasController($scope, helperServices, PetugasServices) {
     }
     $scope.save = () => {
         $.LoadingOverlay("show");
-        $scope.model.roles = helperServices.roles;
         if ($scope.model.id) {
             PetugasServices.put($scope.model).then(result => {
                 Swal.fire({
@@ -63,6 +62,7 @@ function petugasController($scope, helperServices, PetugasServices) {
                 $.LoadingOverlay("hide");
             })
         } else {
+            $scope.model.roles = helperServices.roles;
             PetugasServices.post($scope.model).then(result => {
                 Swal.fire({
                     icon: 'success',

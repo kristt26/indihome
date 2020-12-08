@@ -91,13 +91,6 @@ class Karyawan_model extends CI_Model
     public function update($data)
     {
         $this->db->trans_begin();
-        $this->db->where('userid', $data['userid']);
-        $this->db->delete('userrole');
-        $role = [
-            'userid' => $data['userid'],
-            'roleid' => $data['roles']['id'],
-        ];
-        $this->db->insert('userrole', $role);
         $karyawan = [
             'nama' => $data['nama'],
             'alamat' => $data['alamat'],

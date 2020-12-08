@@ -35,7 +35,7 @@ class Permintaan_model extends CI_Model
             'noregister' => $data['noregister'],
             'tanggal' => $data['tanggal'] = date("Y-m-d H:i:s"),
             'namapemohon' => $data['namapemohon'],
-            'status' => 'Proses',
+            'status' => $data['status'] = 'Proses',
             'pelangganid' => $data['pelanggan']['id'],
             'jenispengajuan' => $data['jenispengajuan'],
         ];
