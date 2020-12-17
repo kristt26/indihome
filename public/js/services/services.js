@@ -154,6 +154,7 @@ function PetugasServices($http, $q, helperServices, AuthService) {
                     data.alamat = param.alamat;
                     data.kontak = param.kontak;
                     data.email = param.email;
+                    data.username = param.username;
                 }
                 def.resolve(res.data);
             },

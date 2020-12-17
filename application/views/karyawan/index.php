@@ -27,7 +27,7 @@
             <label for="email" class="col-form-label col-form-label-sm">Email</label>
             <input type="email" class="form-control  form-control-sm" id="email" ng-model="model.email" placeholder="Email Petugas">
           </div>
-          <div class="form-group" ng-show = "simpan">
+          <div class="form-group">
             <label for="username" class="col-form-label col-form-label-sm">Username</label>
             <input type="text" class="form-control  form-control-sm" id="username" ng-model="model.username" placeholder="Username">
           </div>
@@ -37,6 +37,7 @@
           </div>
           <div class="form-group d-flex justify-content-end">
             <button type="submit" class="btn btn-primary btn-sm pull-right">{{simpan ? 'Simpan': 'Ubah'}}</button>
+            <button type="button" ng-show="!simpan" class="btn btn-warning btn-sm pull-right" ng-click="clear()">Clear</button>
           </div>
         </form>
       </div>

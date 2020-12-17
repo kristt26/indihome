@@ -48,6 +48,10 @@ function petugasController($scope, helperServices, PetugasServices) {
         $scope.model = angular.copy(item);
         $scope.simpan = false;
     }
+    $scope.clear = ()=>{
+        $scope.simpan = true;
+        $scope.model = {};
+    }
     $scope.save = () => {
         $.LoadingOverlay("show");
         if ($scope.model.id) {

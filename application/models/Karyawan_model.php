@@ -15,6 +15,7 @@ class Karyawan_model extends CI_Model
                 `karyawan`.`kontak`,
                 `karyawan`.`email`,
                 `karyawan`.`userid`,
+                `user`.`username`,
                 `user`.`status`
             FROM
                 `karyawan`
@@ -100,6 +101,11 @@ class Karyawan_model extends CI_Model
         ];
         $this->db->where('id', $data['id']);
         $this->db->update('karyawan', $karyawan);
+        $user=[
+            'username'=> $data['username']
+        ];
+        $this->db->where('id', $data['userid']);
+        $this->db->update('user', $user);
         if ($this->db->trans_status()) {
             $this->db->trans_commit();
             return $data;
